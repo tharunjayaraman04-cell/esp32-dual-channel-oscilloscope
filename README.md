@@ -56,7 +56,7 @@ Amplifies CH2 over CH1 in a non-inverting configuration powered from the 5 V rai
 
 Manual Calculations
 
-See docs/manual_calculations.txt for full formulas and step-by-step equations, and docs/esp32_oscilloscope_fft_report.pdf for the formal report.
+See docs/manual_calculations.txt for full formulas and step-by-step equations.
 
 Run Host GUI
 
