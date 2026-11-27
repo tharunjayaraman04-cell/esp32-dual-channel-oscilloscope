@@ -5,10 +5,12 @@ A breadboard-based Dual-Channel Digital Storage Oscilloscope (DSO) and Real-Time
 
 Note: Circuits 1–4 were tested and verified. Circuit 5 (NE555P timer) was skipped following an onboard AMS1117 voltage regulator failure on the ESP32 DevKit.
 
+Safety Note: Never apply more than 3.3 V to GPIO 34 or GPIO 35 (or any ESP32 pin). Keep all input signals strictly within 0–3.3 V to avoid damaging the ESP32.
+
 How It Works
 
 - Signal Generation (GPIO 25): Timer-driven ESP32 DAC function generator outputting selectable sine and square waveforms at adjustable frequencies.
-- Dual-Channel Acquisition (GPIO 34 & GPIO 35): 12-bit ADC1 sampling (0–4095 codes, ADC_11db attenuation for 0–3.3 V) capturing 512-sample buffers at ~7.6–7.7 kSa/s and streaming binary frames at 921600 baud over serial.
+- Dual-Channel Acquisition (GPIO 34 & GPIO 35): 12-bit ADC1 sampling (0–4095 codes, ADC_11db attenuation for 0–3.3 V max) capturing 512-sample buffers at ~7.6–7.7 kSa/s and streaming binary frames at 921600 baud over serial.
 - Real-Time Desktop GUI (PyQtGraph): Displays rising-edge-triggered time-domain plots (CH1 input vs. CH2 output), live Vpp, DC, Vrms, gain, and frequency readouts, and live FFT spectra.
 - Dual-Core OLED Display (GPIO 21 SDA, GPIO 22 SCL): A FreeRTOS task pinned to Core 0 renders live CH1 and CH2 waveforms and Vpp values on a 128x64 SSD1306 I2C OLED without blocking Core 1 sampling.
 
@@ -17,8 +19,8 @@ Pinout
 | Signal | ESP32 Pin | Role |
 | --- | --- | --- |
 | DAC Output | GPIO 25 | Waveform generator output |
-| CH1 (Vin) | GPIO 34 | ADC1 input-only (0–3.3 V) |
-| CH2 (Vout) | GPIO 35 | ADC1 input-only (0–3.3 V) |
+| CH1 (Vin) | GPIO 34 | ADC1 input-only (3.3 V max, do not exceed 3.3 V) |
+| CH2 (Vout) | GPIO 35 | ADC1 input-only (3.3 V max, do not exceed 3.3 V) |
 | OLED SDA | GPIO 21 | I2C data |
 | OLED SCL | GPIO 22 | I2C clock |
 | Ground | GND | Common ground |
