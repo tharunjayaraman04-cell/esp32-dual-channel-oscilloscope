@@ -29,16 +29,17 @@ Circuits Tested & Verified
 Clips positive peaks above an adjustable threshold set via a 1N4148 diode and potentiometer, introducing harmonics visible in the FFT plot.
 - Measured sample (256.4 Hz): CH1 = 2.43 Vpp, CH2 = 1.49 Vpp, Gain = 0.61x (-4.2 dB)
 
-![Circuit 1 - Positive Diode Clipper](assets/circuit1_diode_clipper.png)
+![Circuit 1 - Positive Diode Clipper](assets/circuit1_clipper_1.png)
 
 2. RC Low-Pass Filter (R = 10 kΩ, C = 100 nF, fc ≈ 159.15 Hz)
 Attenuates higher frequencies and produces exponential charging/discharging curves on square waves.
-- Passband (44.5 Hz sine): Gain = 0.87x (-1.2 dB)
+- Low-frequency attenuation (44.5 Hz sine): Gain = 0.87x (-1.2 dB)
 - Cutoff region (163.7 Hz sine): Gain = 0.76x (-2.4 dB)
-- Stopband (905.9 Hz sine): Gain = 0.30x (-10.4 dB)
 - Square wave (177.7 Hz): Gain = 0.88x (-1.1 dB) with exponential RC integration
 
-![Circuit 2 - RC Low-Pass Filter](assets/circuit2_rc_lowpass.png)
+![Circuit 2 - Low-Frequency Response](assets/circuit2_lp_attenuation.png)
+![Circuit 2 - Cutoff Region](assets/circuit2_lp_cutoff.png)
+![Circuit 2 - Square Wave Integration](assets/circuit2_lp_square.png)
 
 3. RC High-Pass Filter (C = 100 nF, Dual 10 kΩ Mid-Rail Bias, Req = 5 kΩ, fc ≈ 318.31 Hz)
 Biases the output near 1.65 V (3.3 V divider), attenuates low frequencies, passes high frequencies, and produces edge spikes on square waves.
@@ -46,13 +47,17 @@ Biases the output near 1.65 V (3.3 V divider), attenuates low frequencies, passe
 - Cutoff transition (285.3 Hz sine): Gain = 0.52x (-5.7 dB)
 - Square wave differentiator (133.1 Hz): Gain = 1.00x (0.0 dB) with sharp edge spikes
 
-![Circuit 3 - RC High-Pass Filter](assets/circuit3_rc_highpass.png)
+![Circuit 3 - Low-Frequency Attenuation](assets/circuit3_hp_attenuation.png)
+![Circuit 3 - Cutoff Transition](assets/circuit3_hp_transition.png)
+![Circuit 3 - Square Wave Transition](assets/circuit3_hp_square.png)
 
 4. LM358 Non-Inverting Amplifier (Rf = 2.2 kΩ, Rg = 10 kΩ, Design Av = 1.22x)
 Amplifies CH2 over CH1 in a non-inverting configuration powered from the 5 V rail with common ground.
 - Measured sample (179.1 Hz sine): CH1 = 2.43 Vpp, CH2 = 2.88 Vpp, Gain = 1.18x (+1.5 dB)
+- Measured sample (237.3 Hz sine): CH1 = 2.46 Vpp, CH2 = 2.88 Vpp, Gain = 1.17x (+1.4 dB)
 
-![Circuit 4 - LM358 Non-Inverting Amplifier](assets/circuit4_lm358_amp.png)
+![Circuit 4 - 179.1 Hz Sine Amplification](assets/circuit4_amp_179hz.png)
+![Circuit 4 - 237.3 Hz Sine Amplification](assets/circuit4_amp_237hz.png)
 
 Manual Calculations
 
